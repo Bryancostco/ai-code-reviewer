@@ -1,1 +1,26 @@
-print("Hello from AI Code Reviewer project!")
+import os
+import mysql.connector #lets me use sql in python 
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# opens the door/ connects me to my database
+conn = mysql.connector.connect(  
+host=os.getenv("DB_HOST"),
+user=os.getenv("DB_USER"),
+password= os.getenv("DB_PASS"),
+database=os.getenv("DB_NAME")
+)
+
+#lets me access queries 
+cursor = conn.cursor()
+
+# run query
+cursor.execute("show tables;")
+results = cursor.fetchall()
+
+print(results)
+
+#close the door/ exit database 
+cursor.close()
+conn.close()
