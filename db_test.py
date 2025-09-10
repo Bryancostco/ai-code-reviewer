@@ -13,7 +13,7 @@ database=os.getenv("DB_NAME")
 )
 
 #lets me access queries 
-cursor = conn.cursor()
+cursor = conn.cursor()  
 
 # run query
 cursor.execute("show tables;")
